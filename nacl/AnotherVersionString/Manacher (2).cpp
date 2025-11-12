@@ -1,4 +1,4 @@
-#define T(x) ((x) & 1 ? s[(x) >> 1] : '.')
+#define T(x) ((x)&1 ? s[(x) >> 1] : '.')
 int ex(string &s, int l, int r, int n) {
     int i = 0;
     while(l - i >= 0 && r + i < n && T(l - i) == T(r + i)) ++i;

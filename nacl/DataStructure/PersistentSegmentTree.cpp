@@ -45,7 +45,7 @@ struct Seg {
         return qry(node->l, l, M, L, M) +
                qry(node->r, M + 1, r, M + 1, R);
     }
-} *tree[N];
+} * tree[N];
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);

@@ -6,7 +6,7 @@ const ll inf = 8e18;
 #define pb push_back
 struct pp {
     int from, to;
-    ll flow;
+    ll cap, flow;
 };
 int t, lvl[N], p[N];
 vector<int> g[N];
@@ -47,18 +47,18 @@ ll dinic(int s) {
     return ans;
 }
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int n, m, cnt = 0;
-    for(cin >> n >> m; m--;) {
+    ios::sync_with_stdio(0); //任意圖上複雜度 V^2E
+    cin.tie(0); //邊容量為 1 時 min(V^{\frac{2}{3}},\sqrt E)E
+    cout.tie(0); //二分圖最大匹配 E\sqrt V(是下面這行的特例)
+    int n, m, cnt = 0; //邊容量 1 時，除源匯點滿足入度或出度
+    for(cin >> n >> m; m--;) { //都是 1，則為 E\sqrt V
         int u, v;
         ll f;
         cin >> u >> v >> f;
         g[u].pb(cnt++);
         g[v].pb(cnt++);
-        edge.pb({u, v, f});
-        edge.pb({v, u, 0});
+        edge.pb({u, v, f, f});
+        edge.pb({v, u, 0, 0});
     }
     t = n;
     cout << dinic(1);

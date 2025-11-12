@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-FILES_EXT = (".c", ".cpp", ".h", ".hpp", ".py", ".sh")
+FILES_EXT = (".c", ".cpp", ".h", ".hpp", ".py", ".sh", ".tex", ".md")
 
 # 你想要的資料夾順序，越前面越優先
 FOLDER_ORDER = ["DataStructure","Math","String","Graph","DP","Geometry","Tree","Misc"]

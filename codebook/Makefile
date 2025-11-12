@@ -6,9 +6,11 @@ export TEXMF_OUTPUT_DIRECTORY := $(BUILD_DIR)
 ifeq ($(OS_NAME),linux)
     RM = rm -rf
     MKDIR = mkdir -p
+    PYTHON_FOR_LATEX = printf '\\newcommand{\\pythoncmd}{%s}' '$(PYTHONCMD)' > pythoncmd.tex
 else ifeq ($(OS_NAME),windows)
     RM = rmdir /s /q
     MKDIR = mkdir
+    PYTHON_FOR_LATEX = echo \newcommand{\pythoncmd}{$(PYTHONCMD)} > pythoncmd.tex
 endif
 
 all: build content
@@ -22,5 +24,5 @@ build:
 	$(MKDIR) $(BUILD_DIR)
 
 content:
-	printf '\\newcommand{\\pythoncmd}{%s}' '$(PYTHONCMD)' > pythoncmd.tex
+	$(PYTHON_FOR_LATEX)
 	$(PYTHONCMD) content-generator.py config.yaml $(BUILD_DIR)$(SEP)content.tex

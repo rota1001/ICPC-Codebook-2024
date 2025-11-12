@@ -12,29 +12,27 @@ Then
 |X/G| = \frac{1}{|G|} \sum_{g \in G} |X^g|.
 \]
 \subsubsection{Pick Theorem}
-    $A = i + \frac{b}{2} - 1$
-
+    $\text{Area} = \text{inner lattice point} + \frac{\text{lattice point on border}}{2} - 1$
 \subsubsection{Fermat's Little Theorem}
     $(a+b)^p \equiv a+b \equiv a^p+b^p \pmod p$
 \subsubsection{Wilson's Theorem}
     $(p-1)! \equiv -1 \pmod p$
 \subsubsection{Legendre Theorem}
-    v(n):=power of p in n\\
-    $(n)_p:=\frac{n}{p^(v(n))}\\$
-    s(n):=sum of all digits of n in base p\\
-    $v(n!)=\sum_{i=1}^\infty \lfloor \frac n {p^i} \rfloor=\frac{n-s(n)}{p-1}$
+    $v_p(n):=\text{power of $p$ in $n$}$\\
+    $(n)_p:=\frac{n}{p^{(v_p(n))}}\\$
+    $s_p(n):=$sum of all digits of $n$ in base $p$\\
+    $v_p(n!)=\sum_{i=1}^\infty \lfloor \frac n {p^i} \rfloor=\frac{n-s_p(n)}{p-1}$
 \subsubsection{Kummer Theorem}
-    $v(\binom{n}{m})=\frac{s(n)+s(m-n)-s(m)}{p-1}$
+    $v_p(\binom{n}{m})=\frac{s_p(n)+s_p(m-n)-s_p(m)}{p-1}$
 \subsubsection{ext-Kummer Theorem}
-    $v(\binom{n}{{m1,m2,...mk}})=\frac{\sum_{i=1}^k s(mi)-s(n)}{p-1}$
+    $v_p(\binom{n}{{m_1,m_2,...m_k}})=\frac{\sum_{i=1}^k s_p(m_i)-s_p(n)}{p-1}$
 \subsubsection{Factorial with mod}
     $(n!)_p \equiv -1^{\lfloor \frac n p\rfloor}((\lfloor \frac n p\rfloor)!)_p((n\%p)!) \pmod p$
     $O(p+\log_p(n))$ with factorial table.
-
 \subsubsection{Properties of nCr with mod}
     If any i in base p satisfies $n_i<m_i$, then $\binom{n_i}{m_i}\%p=0$.
     Therefore $\binom{n}{m}=\prod_{i=0}^{\max(\log_p(a),\log_p(b))}\binom{n_i}{m_i}\%p$ so $\binom{n}{m}\%p=0$.
-    If $p=2$, then $\binom{n}{m}$ is odd <=> any bit in $n<m$.
+    If $p=2$, then $\binom{n}{m}$ is odd $\Leftrightarrow$ any bit in $n<m$.
     Lucas' theorem can be derived from this generating function method without relying on Fermat's Little Theorem.
     It is also true for polynomials.
 \subsubsection{ext-Lucas' Theorem}
@@ -46,3 +44,16 @@ Then
     If there are any k kinds of brackets available, then $k^nC_n$.
 \subsubsection{modinv table}
     $p=i*(p/i)+p\%i,-p\%i=i*(p/i),inv(i)=-(p/i)*inv(p\%i)$
+\subsubsection{LTE}
+\[
+\begin{array}{c}
+    p\text{ is odd prime},n\in\mathbb{N},x\in\mathbb{Z},y\in\mathbb{Z}\\
+    p|(x-y),p \nmid x,p \nmid y\\
+    v_p(x^n-y^n)=v_p(x-y)+v_p(n)\\
+    \begin{matrix}
+    v_2(x^n-y^n)=v_2(x-y)+v_2(n)&\text{if $n$ is odd}\\
+    v_2(x^n-y^n)=v_2(x-y)+v_2(x+y)+v_2(n)-1&\text{else}
+    \end{matrix} \\
+    4|(x-y)\Rightarrow v_2(x+y)=1,v_2(x^n-y^n)=v_2(x-y)+v_2(n)
+\end{array}
+\]
